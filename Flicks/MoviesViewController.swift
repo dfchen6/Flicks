@@ -16,18 +16,17 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchBar: UISearchBar!
     var movies: [NSDictionary]?
     var filteredMovies: [NSDictionary]?
+    var endpoint: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        // Customize navigation bar
         let nav = self.navigationController?.navigationBar
         let search = self.searchBar!
         search.barStyle = UIBarStyle.Black
         nav?.barStyle = UIBarStyle.Black
-        // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
@@ -50,7 +49,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     func loadData() {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
         
         // Configure session so that completion handler is executed on main UI thread
@@ -67,13 +66,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                         data, options:[]) as? NSDictionary {
                             NSLog("response: \(responseDictionary)")
                             self.movies = responseDictionary["results"] as! [NSDictionary]
+                            self.filteredMovies = self.movies
                             self.tableView.reloadData()
                     }
                 }
         });
-        filteredMovies = movies
         task.resume()
-
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -122,10 +120,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender:
-        AnyObject?)
-    {
-        if (segue.identifier == "showView")
-        {
+        AnyObject?) {
+        if (segue.identifier == "showView") {
             let upcoming: MovieDetailController = segue.destinationViewController
                 as! MovieDetailController
             let indexPath = self.tableView.indexPathForSelectedRow!
