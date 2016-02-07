@@ -10,8 +10,8 @@ import AFNetworking
 import UIKit
 import MBProgressHUD
 
+
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     var movies: [NSDictionary]?
@@ -23,10 +23,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        let nav = self.navigationController?.navigationBar
-        let search = self.searchBar!
-        search.barStyle = UIBarStyle.Black
-        nav?.barStyle = UIBarStyle.Black
+        customize()
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
@@ -34,6 +31,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         loadData()
         MBProgressHUD.hideHUDForView(self.view, animated: true)
     }
+    
+    func customize() {
+        let nav = self.navigationController?.navigationBar
+        let search = self.searchBar!
+        search.barStyle = UIBarStyle.Black
+        nav?.barStyle = UIBarStyle.Black
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -86,10 +91,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titlelabel.text = title
         return cell
     }
-    
-    // Makes a network request to get updated data
-    // Updates the tableView with the new data
-    // Hides the RefreshControl
+
     func refreshControlAction(refreshControl: UIRefreshControl) {
         loadData()
         self.tableView.reloadData()
