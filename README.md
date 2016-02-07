@@ -63,7 +63,7 @@ Describe any challenges encountered while building the app.
 
 **Flicks** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **2** hours spent in total
+Time spent: **14** hours spent in total
 
 ## User Stories
 
@@ -80,24 +80,27 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [X] Add a tab bar of **Incoming** movies
+- [X] Add images slide show for each movie using [Auk](https://github.com/evgenyneu/Auk/)
+- [X] Create static background image on detail page
 
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
-
-1. 
-2. 
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
+Begin of this week:
 <img src='http://i.imgur.com/LnlUoiP.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+End of this week:
+
+<img src='https://media.giphy.com/media/26FPNfASx8UYvlZOE/giphy.gif' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I took me a while to implement the image slide show. I tried several cocoas and finally found Auk, which is very easy to use.
 
 ## License
 
