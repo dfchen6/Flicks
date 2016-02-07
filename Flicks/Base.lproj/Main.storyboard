@@ -53,7 +53,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Now Playing" id="akB-7f-WYs" colorLabel="IBBuiltInLabel-Gray"/>
                     <connections>
@@ -69,25 +69,25 @@
         <!--Movie Detail Controller-->
         <scene sceneID="ZBU-TF-DhS">
             <objects>
-                <viewController id="e0a-Hx-LXu" userLabel="Movie Detail Controller" customClass="MovieDetailController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="e0a-Hx-LXu" userLabel="Movie Detail Controller" customClass="MovieDetailController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0FA-MA-9u5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hNb-Ah-2bl">
+                                <rect key="frame" x="0.0" y="-43" width="320" height="655"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DYk-ek-WUB">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hNb-Ah-2bl">
-                                        <rect key="frame" x="0.0" y="-43" width="320" height="655"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <view alpha="0.90000000000000002" contentMode="scaleToFill" id="fj9-N1-Hdz">
-                                        <rect key="frame" x="0.0" y="387" width="320" height="452"/>
+                                    <view contentMode="scaleToFill" id="fj9-N1-Hdz">
+                                        <rect key="frame" x="0.0" y="366" width="320" height="677"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="4OU-gN-VfF">
-                                                <rect key="frame" x="8" y="94" width="293" height="120"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" id="4OU-gN-VfF">
+                                                <rect key="frame" x="8" y="74" width="293" height="137"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -96,47 +96,51 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kho-vy-Nt4">
-                                                <rect key="frame" x="14" y="8" width="246" height="44"/>
+                                                <rect key="frame" x="14" y="5" width="246" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="date" id="yGn-wu-uxb">
-                                                <rect key="frame" x="15" y="46" width="25" height="27"/>
+                                                <rect key="frame" x="15" y="43" width="25" height="27"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VT8-kE-frM">
-                                                <rect key="frame" x="52" y="48" width="115" height="21"/>
+                                                <rect key="frame" x="52" y="45" width="115" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rating" id="GhY-BQ-kQk">
-                                                <rect key="frame" x="215" y="46" width="25" height="25"/>
+                                                <rect key="frame" x="215" y="43" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.14" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fFj-cL-MP7">
-                                                <rect key="frame" x="254" y="48" width="53" height="23"/>
+                                                <rect key="frame" x="254" y="45" width="53" height="23"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <webView contentMode="scaleToFill" id="Hfd-v8-ecP">
-                                                <rect key="frame" x="14" y="282" width="280" height="157"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                                            </webView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trailer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="URQ-Qv-mpw">
-                                                <rect key="frame" x="13" y="247" width="65" height="21"/>
+                                                <rect key="frame" x="20" y="423" width="65" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <webView contentMode="scaleToFill" id="Hfd-v8-ecP">
+                                                <rect key="frame" x="20" y="452" width="280" height="157"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                            </webView>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="37S-I4-TbK">
+                                                <rect key="frame" x="0.0" y="241" width="320" height="174"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </scrollView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
@@ -149,11 +153,12 @@
                     <connections>
                         <outlet property="date" destination="VT8-kE-frM" id="hVs-ht-71D"/>
                         <outlet property="imageDisplay" destination="hNb-Ah-2bl" id="Jd3-FL-uQs"/>
+                        <outlet property="imageSlider" destination="37S-I4-TbK" id="v6c-nd-5Uc"/>
                         <outlet property="infoView" destination="fj9-N1-Hdz" id="gq8-Iu-z9h"/>
                         <outlet property="movieTitle" destination="kho-vy-Nt4" id="xbE-57-pgc"/>
                         <outlet property="overview" destination="4OU-gN-VfF" id="hxs-wh-NqA"/>
                         <outlet property="rating" destination="fFj-cL-MP7" id="y6f-r6-hmG"/>
-                        <outlet property="scrollView" destination="DYk-ek-WUB" id="VUZ-ix-UO8"/>
+                        <outlet property="scrollView" destination="DYk-ek-WUB" id="BuS-r5-YnG"/>
                         <outlet property="webView" destination="Hfd-v8-ecP" id="qOm-3j-a48"/>
                     </connections>
                 </viewController>

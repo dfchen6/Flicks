@@ -7,21 +7,23 @@
 //
 
 import UIKit
+import Auk
+
 
 class MovieDetailController: UIViewController {
-
-    @IBOutlet weak var infoView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var movieTitle: UILabel!
     var titleStringViaSegue: String!
     var overviewViaSegue: String!
     var imageURLViaSegue: NSURL!
     var movieViaSegue: NSDictionary!
-    
+    var movieImages: [NSDictionary]!
+    var movieImagesPath: [String] = []
+    @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var overview: UITextView!
     @IBOutlet weak var imageDisplay: UIImageView!
-    
+    @IBOutlet weak var imageSlider: UIScrollView!
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var rating: UILabel!
     
@@ -31,8 +33,11 @@ class MovieDetailController: UIViewController {
         self.movieTitle.text = (movieViaSegue["title"] as! String)
         self.overview.text = (movieViaSegue["overview"] as! String)
         self.date.text = (movieViaSegue["release_date"] as! String)
+        
         if let imageURL = NSURL(string: "http://image.tmdb.org/t/p/w500/" + (movieViaSegue["poster_path"] as? String)!) {
             imageDisplay.setImageWithURL(imageURL)
+        } else {
+            imageDisplay.setImageWithURL(NSURL(fileURLWithPath: "https://c1.staticflickr.com/1/186/382004453_f4b2772254.jpg"))
         }
         self.rating.text = ( String (movieViaSegue["vote_average"] as! Float32))
         
@@ -40,10 +45,10 @@ class MovieDetailController: UIViewController {
 
         var movieVideo: [NSDictionary]?
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        var youtubeKey = "EIELwayIIT4"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/" + movieID + "/videos?api_key=\(apiKey)")
-        print(url)
-        let request = NSURLRequest(URL: url!)
+        let videoUrl = NSURL(string:"https://api.themoviedb.org/3/movie/" + movieID + "/videos?api_key=\(apiKey)")
+        let videoRequest = NSURLRequest(URL: videoUrl!)
+        let imagesUrl = NSURL(string:"https://api.themoviedb.org/3/movie/" + movieID + "/images?api_key=\(apiKey)")
+        let imageRequest = NSURLRequest(URL: imagesUrl!)
         
         // Configure session so that completion handler is executed on main UI thread
         let session = NSURLSession(
@@ -52,7 +57,7 @@ class MovieDetailController: UIViewController {
             delegateQueue:NSOperationQueue.mainQueue()
         )
         
-        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
+        let task : NSURLSessionDataTask = session.dataTaskWithRequest(videoRequest,
             completionHandler: { (dataOrNil, response, error) in
                 if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
@@ -60,7 +65,7 @@ class MovieDetailController: UIViewController {
                             movieVideo = responseDictionary["results"] as! [NSDictionary]
                             print(movieVideo)
                             let oneMovie = movieVideo![0]
-                            youtubeKey = oneMovie["key"] as! String
+                            let youtubeKey = oneMovie["key"] as! String
                             var youtubeUrl = "http://www.youtube.com/embed/"
                             youtubeUrl += youtubeKey
                             let frame = 0
@@ -70,11 +75,35 @@ class MovieDetailController: UIViewController {
                 }
         });
         task.resume()
+        let imagesTask : NSURLSessionDataTask = session.dataTaskWithRequest(imageRequest,
+            completionHandler: { (dataOrNil, response, error) in
+                if let data = dataOrNil {
+                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                        data, options:[]) as? NSDictionary {
+                            self.movieImages = responseDictionary["backdrops"] as! [NSDictionary]
+                            print(self.movieImages)
+                            for items in self.movieImages {
+                                self.movieImagesPath.append("http://image.tmdb.org/t/p/w500" + (items["file_path"] as! String))
+                            }
+                            self.slideShow()
+                     }
+                }
+        });
+        imagesTask.resume()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func slideShow() {
+        for path in self.movieImagesPath {
+            imageSlider.auk.show(url:path)
+        }
+    }
+    
+
+    
     
 }
