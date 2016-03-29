@@ -93,19 +93,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C64397451C4F711800E4364B /* views */ = {
+		C64397481C4F716E00E4364B /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C652C1D71C5ABBD4001A0BD2 /* MovieDetailController.swift */,
+				C686E53E1C484F1E002724DD /* MoviesViewController.swift */,
 				C64397461C4F715C00E4364B /* MovieCell.swift */,
 			);
-			name = views;
-			sourceTree = "<group>";
-		};
-		C64397481C4F716E00E4364B /* view controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "view controllers";
+			name = viewControllers;
 			sourceTree = "<group>";
 		};
 		C686E5201C484DD2002724DD = {
@@ -131,15 +126,12 @@
 			children = (
 				C6998C1D1C66C6320016D0A0 /* SDWebImage.xcodeproj */,
 				C6998C1B1C66C50B0016D0A0 /* SDWebImage */,
-				C64397481C4F716E00E4364B /* view controllers */,
-				C64397451C4F711800E4364B /* views */,
+				C64397481C4F716E00E4364B /* viewControllers */,
 				C686E52C1C484DD2002724DD /* AppDelegate.swift */,
 				C686E5301C484DD2002724DD /* Main.storyboard */,
 				C686E5331C484DD2002724DD /* Assets.xcassets */,
 				C686E5351C484DD2002724DD /* LaunchScreen.storyboard */,
 				C686E5381C484DD2002724DD /* Info.plist */,
-				C686E53E1C484F1E002724DD /* MoviesViewController.swift */,
-				C652C1D71C5ABBD4001A0BD2 /* MovieDetailController.swift */,
 			);
 			path = Flicks;
 			sourceTree = "<group>";

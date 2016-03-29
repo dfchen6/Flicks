@@ -9,14 +9,16 @@
 import UIKit
 import Auk
 
-
 class MovieDetailController: UIViewController {
+    
     var titleStringViaSegue: String!
     var overviewViaSegue: String!
     var imageURLViaSegue: NSURL!
     var movieViaSegue: NSDictionary!
     var movieImages: [NSDictionary]!
     var movieImagesPath: [String] = []
+    var movieVideo: [NSDictionary]?
+    
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var movieTitle: UILabel!
@@ -40,10 +42,7 @@ class MovieDetailController: UIViewController {
             imageDisplay.setImageWithURL(NSURL(fileURLWithPath: "https://c1.staticflickr.com/1/186/382004453_f4b2772254.jpg"))
         }
         self.rating.text = ( String (movieViaSegue["vote_average"] as! Float32))
-        
         let movieID = String (movieViaSegue["id"] as! Int)
-
-        var movieVideo: [NSDictionary]?
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let videoUrl = NSURL(string:"https://api.themoviedb.org/3/movie/" + movieID + "/videos?api_key=\(apiKey)")
         let videoRequest = NSURLRequest(URL: videoUrl!)
@@ -57,14 +56,19 @@ class MovieDetailController: UIViewController {
             delegateQueue:NSOperationQueue.mainQueue()
         )
         
+        fetchVideos(session, videoRequest: videoRequest)
+        fetchImages(session, imageRequest: imageRequest)
+        }
+    
+    // Mark: - Helpers
+    func fetchVideos(session: NSURLSession, videoRequest: NSURLRequest) {
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(videoRequest,
             completionHandler: { (dataOrNil, response, error) in
                 if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
-                            movieVideo = responseDictionary["results"] as! [NSDictionary]
-                            print(movieVideo)
-                            let oneMovie = movieVideo![0]
+                            self.movieVideo = responseDictionary["results"] as? [NSDictionary]
+                            let oneMovie = self.movieVideo![0]
                             let youtubeKey = oneMovie["key"] as! String
                             var youtubeUrl = "http://www.youtube.com/embed/"
                             youtubeUrl += youtubeKey
@@ -75,6 +79,9 @@ class MovieDetailController: UIViewController {
                 }
         });
         task.resume()
+    }
+    
+    func fetchImages(session: NSURLSession, imageRequest: NSURLRequest) {
         let imagesTask : NSURLSessionDataTask = session.dataTaskWithRequest(imageRequest,
             completionHandler: { (dataOrNil, response, error) in
                 if let data = dataOrNil {
@@ -86,15 +93,10 @@ class MovieDetailController: UIViewController {
                                 self.movieImagesPath.append("http://image.tmdb.org/t/p/w500" + (items["file_path"] as! String))
                             }
                             self.slideShow()
-                     }
+                    }
                 }
         });
         imagesTask.resume()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func slideShow() {
@@ -102,8 +104,4 @@ class MovieDetailController: UIViewController {
             imageSlider.auk.show(url:path)
         }
     }
-    
-
-    
-    
 }
