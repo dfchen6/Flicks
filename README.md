@@ -35,7 +35,8 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/6v8uddM.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+[Video Walkthough](http://i.imgur.com/OFmGCsI.gifv)
+
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
@@ -90,12 +91,11 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 Begin of this week:
-
-<img src='http://i.imgur.com/LnlUoiP.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+[Video Walkthrough](http://i.imgur.com/1GiRfaI.gifv)
 
 End of this week:
 
-<img src='https://media.giphy.com/media/26FPNfASx8UYvlZOE/giphy.gif' />
+[Video Walkthough](http://i.imgur.com/CRcZ8qQ.gifv)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
